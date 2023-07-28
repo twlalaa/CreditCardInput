@@ -53,6 +53,7 @@
                 id="card_name"
                 required
               />
+              <small id="name-error">Can't be empty!</small>
             </div>
             <div class="grid_2">
               <label for="card_number">Card Number</label>
@@ -65,6 +66,7 @@
                 id="card_number"
                 required
               />
+              <small id="number-error">Can't be empty!</small>
             </div>
             <div class="card_information">
               <div id="card_date">
@@ -80,6 +82,7 @@
                       id="card_month"
                       required
                     />
+                    <small id="month-error">Enter a valid month!</small>
                   </div>
                   <div>
                     <input
@@ -91,6 +94,7 @@
                       id="card_year"
                       required
                     />
+                    <small id="year-error">Year cannot be empty!</small>
                   </div>
                 </div>
               </div>
@@ -104,6 +108,7 @@
                   id="card_cvc"
                   required
                 />
+                <small id="cvc-error"></small>
               </div>
             </div>
             <button id="submit_btn" type="submit">Confirm</button>

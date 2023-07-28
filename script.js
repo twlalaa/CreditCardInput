@@ -24,27 +24,77 @@ const submitBtn = document.getElementById("submit_btn");
 
 const inputs = [nameInput, monthInput, yearInput, cvcInput, numberInput];
 
+const nameError = document.getElementById("name-error");
+
+const monthError = document.getElementById("month-error");
+
+const numberError = document.getElementById("number-error");
+
+const yearError = document.getElementById("year-error");
+
+const cvcError = document.getElementById("cvc-error");
+
 inputs.forEach((input, index) => {
   input.addEventListener("keyup", () => {
     if (index == 0) {
-      cardName.innerText = "";
-      cardName.innerText = input.value;
+      if (input.value) {
+        cardName.innerHTML = input.value;
+        nameError.style.color = "white";
+      } else {
+        cardName.innerText = "";
+        nameError.style.color = "red";
+      }
     }
     if (index == 1) {
-      monthEl.innerText = "";
-      monthEl.innerText = input.value;
+      if (!input.value) {
+        monthEl.innerText = "";
+        monthError.style.color = "red";
+        monthError.innerText = "Month cannot be empty!";
+      } else if (input.value > 12) {
+        monthEl.innerText = "";
+        monthError.style.color = "red";
+        monthError.innerText = "Enter a valid month!";
+      } else {
+        monthEl.innerText = "input.value";
+        monthError.style.color = "white";
+      }
     }
     if (index == 2) {
-      yearEl.innerText = "";
-      yearEl.innerText = input.value;
+      if (!input.value) {
+        yearEl.innerText = "";
+        yearError.style.color = "red";
+      } else if (input.value < 23 && input.value.length == 2) {
+        yearEl.innerText = "";
+        yearError.innerText = "Enter a valid year!";
+        yearError.style.color = "red";
+      } else {
+        yearEl.innerHTML = input.value;
+        yearError.innerText = "Year cannot be empty!";
+        yearError.style.color = "white";
+      }
     }
     if (index == 3) {
-      cvcEl.innerText = "";
-      cvcEl.innerText = input.value;
+      if (!input.value) {
+        cvcEl.innerText = "";
+        cvcError.innerText = "CVC cannot be empty!";
+        cvcError.style.color = "red";
+      } else {
+        cvcEl.innerHTML = input.value;
+        cvcError.style.color = "white";
+      }
     }
     if (index == 4) {
-      numberEl.innerText = "";
-      numberEl.innerText = input.value;
+      if (numberInput.value) {
+        let displayNum = "";
+        for (let i = 0; i < numberInput.value.length; i += 4) {
+          displayNum += numberInput.value.slice(i, i + 4) + " ";
+        }
+        numberEl.innerText = displayNum.trim();
+        numberError.style.color = "white";
+      } else {
+        numberEl.innerText = "";
+        numberError.style.color = "red";
+      }
     }
   });
 });
